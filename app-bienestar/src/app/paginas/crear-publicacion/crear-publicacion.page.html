@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title size="large">Publicacion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref ="/Home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<app-formulario></app-formulario>
+  <ion-grid>
+     <ion-row>
+         <ion-button (click)="TomarFoto()">
+          <ion-icon name="camera" slot="start"></ion-icon>
+           Tomar Fotografía </ion-button>
+           <ion-col size="6" *ngFor="let f of fotos">
+            <ion-img [src]= "'data:image/jpeg;base64,'+f"/>
+          </ion-col>    
+          </ion-row>
+        </ion-grid>

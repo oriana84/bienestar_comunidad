@@ -1,0 +1,33 @@
+<ion-list >
+<ion-item>
+  <ion-list>
+  <ion-input
+    [(ngModel)]="tituloStr"
+    required ="required"
+    minlength ="5"
+    #tituloInput="ngModel"
+    label="Titulo"
+    labelPlacement="stacked" />
+ <ion-input
+    [(ngModel)]="descripcionStr"
+    required ="required"
+    minlength ="20"
+    #descripcionInput="ngModel"
+    label="Descripción"
+    labelPlacement="stacked" />
+    </ion-list>
+</ion-item>
+<ion-item>
+  <ion-text
+    [hidden]= "tituloInput.valid || tituloInput.pristine"
+    color = "danger"> Escriba un titulo de mas de 5 letras!</ion-text>
+    <ion-text
+    [hidden]= "descripcionInput.valid || descripcionInput.pristine"
+    color = "danger"> Escriba una descripcion con mas de 20 letras!</ion-text>
+<ion-button 
+      [disabled]="!tituloInput.valid && !descripcionInput.valid"
+      slot="end" fill="clear"
+      expand="block" color="primary" (click) = "guardar()">Guardar Publicación</ion-button>
+
+</ion-item>
+</ion-list>

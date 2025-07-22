@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Publicaciones</ion-title>
+      <ion-buttons slot="end">
+      <ion-button fill="clear" [routerLink] ="['/crear-publicacion']">
+            <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list *ngIf="publicaciones.length > 0; else noHay">
+    <ion-item *ngFor="let pub of publicaciones">
+      <ion-avatar slot="start" *ngIf="pub.imagen">
+        <img [src]="pub.imagen" />
+      </ion-avatar>
+      <ion-label>
+        <h2>{{ pub.titulo }}</h2>
+        <p>{{ pub.descripcion }}</p>
+        <p><strong>Fecha:</strong> {{ pub.fecha | date:'fechaFormateada'}}</p>
+      </ion-label>
+     
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+    
+    </ion-item>
+  </ion-list>
+
+  <ng-template #noHay>
+    <ion-text color="medium">
+      <p class="ion-padding">No hay publicaciones aún.</p>
+    </ion-text>
+  </ng-template>
+</ion-content>
